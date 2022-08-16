@@ -1,0 +1,60 @@
+<mvc:View xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" 
+	controllerName="transferencia.depositoZ_TRANSF_DEP.controller.FiltroReserva" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:semantic="sap.f.semantic" 
+	xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout">
+	<semantic:SemanticPage id="mySemanticPage" headerPinnable="true" toggleHeaderOnTitleClick="false" headerExpanded="true" showFooter="false"
+		preserveHeaderStateOnScroll="false">
+		<semantic:headerContent>
+			<form:SimpleForm editable="true" layout="ResponsiveGridLayout" singleContainerFullSize="true" labelSpanXL="4" labelSpanL="3" labelSpanM="12"
+				labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1">
+				<Label text="Ordem"/>
+				<Input value="{viewModel>/Ordem}"/>
+				<Toolbar>
+					<ToolbarSpacer/>
+					<Button text="Pesquisar" icon="sap-icon://search" press="readReservas"/>
+				</Toolbar>
+			</form:SimpleForm>
+		</semantic:headerContent>
+		<semantic:content>
+			<IconTabBar select="handleFilterFromBar" class="sapUiResponsiveContentPadding">
+				<content>
+					<Table id="tbReservas" class="custom_table" inset="false" items="{path: '/ReservaSet'}"
+						busy="{viewModel>/busy}" mode="None">
+						<columns>
+							<Column minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
+								<Text text="Item"/>
+							</Column>
+							<Column demandPopin="true">
+								<Text text="Componente"/>
+							</Column>
+							<Column demandPopin="true">
+								<Text text="Denominação"/>
+							</Column>
+							<Column demandPopin="true">
+								<Text text="Qtd.necess"/>
+							</Column>
+							<Column demandPopin="true">
+								<Text text="UM"/>
+							</Column>
+							<Column demandPopin="true">
+								<Text text="Lote"/>
+							</Column>
+						</columns>
+						<items>
+							<ColumnListItem vAlign="Middle" press="displayReserva" type="Navigation" class="borda_destacada">
+								<cells>
+									<!--<ObjectIdentifier title="{RSPOS}" text="{= ${INBOUND} === true ? 'Recebimento' : 'Saída Depósito' }"/>-->
+									<Text text="{RSPOS}"/>
+									<Text text="{MATNR}"/>
+									<Text text="{MAKTX}"/>
+									<Text text="{BDMNG}"/>
+									<Text text="{MEINS}"/>
+									<Text text="{CHARG}"/>
+								</cells>
+							</ColumnListItem>
+						</items>
+					</Table>
+				</content>
+			</IconTabBar>
+		</semantic:content>
+	</semantic:SemanticPage>
+</mvc:View>
