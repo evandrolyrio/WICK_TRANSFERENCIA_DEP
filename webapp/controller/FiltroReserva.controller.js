@@ -49,6 +49,18 @@ sap.ui.define([
 			});
 
 		},
+		displayReserva: function () {
+			var OBoundItem = oEvent.getSource().getBindingContext().getObject();
+			if (OBoundItem) {
+
+				this.getRouter().navTo("ProcessarReserva", {
+					aufnr: OBoundItem.AUFNR,
+					rsnum: OBoundItem.RSNUM,
+					rspos: OBoundItem.RSPOS,
+					layout: this.getNextUiState(1).layout
+				});
+			}
+		},
 
 	});
 });

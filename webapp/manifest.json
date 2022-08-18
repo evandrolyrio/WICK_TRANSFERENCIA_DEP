@@ -109,7 +109,7 @@
 					"layout": "OneColumn"
 				},
 				{
-					"pattern": "reserva/{aufnr}/:layout:",
+					"pattern": "reserva/{aufnr}/{rsnum}/{rspos}/:layout:",
 					"name": "ProcessarReserva",
 					"target": [
 						"FiltroReserva",
