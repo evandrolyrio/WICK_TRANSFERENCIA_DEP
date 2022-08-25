@@ -1,6 +1,9 @@
 sap.ui.define([
-	"sap/ui/core/mvc/Controller"
-], function(Controller) {
+	// "sap/ui/core/mvc/Controller"
+	"transferencia/depositoZ_TRANSF_DEP/controller/BaseController",
+	"sap/ui/model/json/JSONModel",
+	"transferencia/depositoZ_TRANSF_DEP/model/formatter"
+], function(Controller, JSONModel, formatter) {
 	"use strict";
 
 	return Controller.extend("transferencia.depositoZ_TRANSF_DEP.controller.ProcessarReserva", {

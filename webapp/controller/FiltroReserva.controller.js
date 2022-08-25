@@ -19,12 +19,13 @@ sap.ui.define([
 				//Set the View Model;
 	
 				this.setModel(new JSONModel({
-					busy: true,
+					busy: false,
 					//FilterData
+					ReservaSet: [],
 					Aufnr: ""
 				}), "viewModel");
 		},
-		filtraReservas: function() {
+		readReservas: function() {
 			var oModel = this.getModel();
 			var oViewModelData = this.getModel("viewModel").getData("/");
 			// this.getModel("reportModel").setProperty("/ReservaSet", []);
@@ -37,7 +38,7 @@ sap.ui.define([
 				},
 				"$expand": "Items",
 				success: (oData) => {
-					// this.getModel("reportModel").setProperty("/ReservaSet", oData.results);
+					this.getModel("viewModel").setProperty("/ReservaSet", oData.results);
 					this.getView().byId("tbReservas").getBinding("items").refresh();
 					this.getModel("viewModel").setProperty("/busy", false);
 				},
@@ -60,6 +61,15 @@ sap.ui.define([
 					layout: this.getNextUiState(1).layout
 				});
 			}
+		},
+		novo: function () {
+
+			this.getRouter().navTo("ProcessarReserva", {
+				aufnr: "1",
+				rsnum: "1",
+				rspos: "9",
+				layout: this.getNextUiState(1).layout
+			});
 		},
 
 	});

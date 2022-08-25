@@ -24,7 +24,6 @@
 			"version": "1.40.12"
 		}
 	},
-
 	"sap.ui": {
 		"technology": "UI5",
 		"icons": {
@@ -43,10 +42,8 @@
 		"supportedThemes": [
 			"sap_hcb",
 			"sap_belize"
-
 		]
 	},
-
 	"sap.ui5": {
 		"rootView": {
 			"viewName": "transferencia.depositoZ_TRANSF_DEP.view.FiltroReserva",
@@ -84,12 +81,14 @@
 				},
 				"dataSource": "Z_TRANS_DEP_SRV",
 				"preload": true
-			}			
+			}
 		},
 		"resources": {
-			"css": [{
-				"uri": "css/style.css"
-			}]
+			"css": [
+				{
+					"uri": "css/style.css"
+				}
+			]
 		},
 		"routing": {
 			"config": {
@@ -128,6 +127,10 @@
 					"controlAggregation": "midColumnPages"
 				}
 			}
-		}		
+		}
+	},
+	"sap.platform.abap": {
+		"uri": "/sap/bc/ui5_ui5/sap/z_transf_dep/webapp",
+		"_version": "1.1.0"
 	}
 }

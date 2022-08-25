@@ -39,6 +39,11 @@
     "sourceFolder": "webapp",
     "targetFolder": "dist",
     "excludedFolders": [],
-    "excludedFiles": []
+    "excludedFiles": [],
+    "lastBuildDateTime": "Thu, 18 Aug 2022 13:52:30 GMT"
+  },
+  "deploy": {
+    "destination": "SFD",
+    "name": "Z_TRANSF_DEP"
   }
 }

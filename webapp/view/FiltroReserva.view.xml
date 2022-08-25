@@ -7,7 +7,7 @@
 			<form:SimpleForm editable="true" layout="ResponsiveGridLayout" singleContainerFullSize="true" labelSpanXL="4" labelSpanL="3" labelSpanM="12"
 				labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1">
 				<Label text="Ordem"/>
-				<Input value="{viewModel>/Ordem}"/>
+				<Input value="{viewModel>/Aufnr}"/>
 				<Toolbar>
 					<ToolbarSpacer/>
 					<Button text="Pesquisar" icon="sap-icon://search" press="readReservas"/>
@@ -18,7 +18,7 @@
 		<semantic:content>
 			<IconTabBar select="handleFilterFromBar" class="sapUiResponsiveContentPadding">
 				<content>
-					<Table id="tbReservas" class="custom_table" inset="false" items="{path: '/ReservaSet'}"
+					<Table id="tbReservas" class="custom_table" inset="false" items="{path: 'viewModel>/ReservaSet', parameters : { count: true }}"
 						busy="{viewModel>/busy}" mode="None">
 						<columns>
 							<Column minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
@@ -27,7 +27,7 @@
 							<Column demandPopin="true">
 								<Text text="Componente"/>
 							</Column>
-							<Column demandPopin="true">
+							<Column demandPopin="true" width="30%">
 								<Text text="Denominação"/>
 							</Column>
 							<Column demandPopin="true">
@@ -44,12 +44,12 @@
 							<ColumnListItem vAlign="Middle" press="displayReserva" type="Navigation" class="borda_destacada">
 								<cells>
 									<!--<ObjectIdentifier title="{RSPOS}" text="{= ${INBOUND} === true ? 'Recebimento' : 'Saída Depósito' }"/>-->
-									<Text text="{RSPOS}"/>
-									<Text text="{MATNR}"/>
-									<Text text="{MAKTX}"/>
-									<Text text="{BDMNG}"/>
-									<Text text="{MEINS}"/>
-									<Text text="{CHARG}"/>
+									<Text text="{viewModel>RSPOS}"/>
+									<Text text="{viewModel>MATNR}"/>
+									<Text text="{viewModel>MAKTX}"/>
+									<Text text="{viewModel>BDMNG}"/>
+									<Text text="{viewModel>MEINS}"/>
+									<Text text="{viewModel>CHARG}"/>
 								</cells>
 							</ColumnListItem>
 						</items>

@@ -1,10 +1,49 @@
-<mvc:View controllerName="transferencia.depositoZ_TRANSF_DEP.controller.ProcessarReserva" xmlns:html="http://www.w3.org/1999/xhtml"
-	xmlns:mvc="sap.ui.core.mvc" displayBlock="true" xmlns="sap.m">
-	<App>
-		<pages>
-			<Page title="{i18n>title}">
-				<content></content>
-			</Page>
-		</pages>
-	</App>
+<mvc:View controllerName="transferencia.depositoZ_TRANSF_DEP.controller.ProcessarReserva" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m" xmlns:goals="sap.uxap.sample.SharedBlocks.goals" xmlns="sap.uxap" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:semantic="sap.f.semantic" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout">
+	<ObjectPageLayout showFooter="{viewModel>/showFooter}" busy="{viewModel>/busy}">  
+		<headerContent>
+			<form:SimpleForm editable="true" layout="ResponsiveGridLayout" singleContainerFullSize="true" labelSpanXL="4" labelSpanL="3" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1">
+				<m:Toolbar>
+					<m:ToolbarSpacer/>
+					<m:Button text="Verificar" icon="sap-icon://newspaper" press="verificar"/>
+					<m:Button text="Registrar" icon="sap-icon://sys-enter-2" press="registrar"/>
+				</m:Toolbar>
+			</form:SimpleForm>			
+		</headerContent>
+	  	<sections>
+			<ObjectPageSection titleUppercase="false" id="migoSection" title="Saída de mercadorias para centro de custos">
+				<subSections>
+					<ObjectPageSubSection id="migoSectionSS1">
+						<blocks>
+							<l:VerticalLayout>
+								<m:Label text="Data Documento"/>
+								<m:DatePicker value="{Bldat}" valueFormat="dd.MM.yyyy" displayFormat="short"/>				
+								<m:Label text="Data lçto."/>
+								<m:DatePicker value="{Budat}" valueFormat="dd.MM.yyyy" displayFormat="short"/>								
+								<m:Label text="Tipo de Movimento" width="100%"/>
+							<!--<l:HorizontalLayout class="sapUiContentPadding">-->
+								<!--<m:Label text="Tipo Mov." wrapping="true"/>-->
+								<m:Input value="{Bwart}" description="{viewModels>/Bwtxt}" editable="false" textAlign="Center"/>				
+							<!--</l:HorizontalLayout>	-->
+								<m:Label text="Depósito"/>
+								<m:Input value="{viewModels>/Lgort}" description="{viewModels>/Lgobe}"/>							
+								<m:Label text="Text.cab.doc."/>
+								<m:Input value="{Bktxt}" editable="false"/>	
+
+							</l:VerticalLayout>								
+							<l:VerticalLayout>									
+								<m:Label text="Centro"/>
+								<m:Input value="{Werks}" description="{viewModels>/Name1}"/>				
+								<m:Label text="Lote"/>
+								<m:Input value="{viewModels>/Charg}"/>
+								<m:Label text="Material"/>
+								<m:Input value="{Matnr}" description="{viewModels>/Maktx}"/>								
+								<m:Label text="Qtd.em UM registro"/>
+								<m:Input value="{viewModels>/Erfmg}" description="{viewModels>/Meins}"/>
+							</l:VerticalLayout>
+						</blocks>
+					</ObjectPageSubSection>
+				</subSections>
+			</ObjectPageSection>
+		</sections>
+	</ObjectPageLayout>
 </mvc:View>
