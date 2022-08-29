@@ -10,35 +10,39 @@
 			</form:SimpleForm>			
 		</headerContent>
 	  	<sections>
-			<ObjectPageSection titleUppercase="false" id="migoSection" title="Saída de mercadorias para centro de custos">
+			<ObjectPageSection titleUppercase="false" id="migoSection" title="Transferência para área de separação OP">
 				<subSections>
 					<ObjectPageSubSection id="migoSectionSS1">
 						<blocks>
 							<l:VerticalLayout>
+								<m:Label text="Ordem" visible="{= ${viewModels>/NOVO} === 'X' ? false : true }"/>
+								<m:Input value="{viewModels>/AUFNR}" editable="{= ${viewModels>/NOVO} === 'X' ? true : false }"
+								visible="{= ${viewModels>/NOVO} === 'X' ? false : true }"/>
 								<m:Label text="Data Documento"/>
-								<m:DatePicker value="{Bldat}" valueFormat="dd.MM.yyyy" displayFormat="short"/>				
+								<m:DatePicker value="{viewModels>/DATA_DOC}" valueFormat="dd.MM.yyyy" displayFormat="short" editable="false"/>				
 								<m:Label text="Data lçto."/>
-								<m:DatePicker value="{Budat}" valueFormat="dd.MM.yyyy" displayFormat="short"/>								
+								<m:DatePicker value="{viewModels>/DATA_LANC}" valueFormat="dd.MM.yyyy" displayFormat="short" editable="false"/>								
 								<m:Label text="Tipo de Movimento" width="100%"/>
-							<!--<l:HorizontalLayout class="sapUiContentPadding">-->
-								<!--<m:Label text="Tipo Mov." wrapping="true"/>-->
-								<m:Input value="{Bwart}" description="{viewModels>/Bwtxt}" editable="false" textAlign="Center"/>				
-							<!--</l:HorizontalLayout>	-->
+								<m:Input value="{viewModels>/BWART}" description="{viewModels>/BTEXT}" editable="false" textAlign="Center"/>				
 								<m:Label text="Depósito"/>
-								<m:Input value="{viewModels>/Lgort}" description="{viewModels>/Lgobe}"/>							
-								<m:Label text="Text.cab.doc."/>
-								<m:Input value="{Bktxt}" editable="false"/>	
+								<m:Input value="{viewModels>/LGORT}" description="{viewModels>/LGOBE}"/>
+								<m:Label text="Dps.recep."/>
+								<m:Input value="{viewModels>/UMLGO}" description="{viewModels>/LGOBE_R}"/>								
+								<!--<m:Label text="Text.cab.doc."/>-->
+								<!--<m:Input value="{BKTEXT}" editable="false"/>	-->
 
 							</l:VerticalLayout>								
-							<l:VerticalLayout>									
+							<l:VerticalLayout>		
+								<m:Label text="Item"  visible="{= ${viewModels>/NOVO} === 'X' ? false : true }"/>
+								<m:Input value="{viewModels>/POSNR}"  visible="{= ${viewModels>/NOVO} === 'X' ? false : true }"/>							
 								<m:Label text="Centro"/>
-								<m:Input value="{Werks}" description="{viewModels>/Name1}"/>				
+								<m:Input value="{viewModels>/WERKS}" description="{viewModels>/NAME1}" editable="{= ${viewModels>/NOVO} === 'X' ? true : false }"/>				
 								<m:Label text="Lote"/>
-								<m:Input value="{viewModels>/Charg}"/>
+								<m:Input value="{viewModels>/CHARG}" editable="{= ${viewModels>/NOVO} === 'X' ? true : false }"/>
 								<m:Label text="Material"/>
-								<m:Input value="{Matnr}" description="{viewModels>/Maktx}"/>								
+								<m:Input value="{viewModels>/MATNR}" description="{viewModels>/MAKTX}" editable="{= ${viewModels>/NOVO} === 'X' ? true : false }"/>								
 								<m:Label text="Qtd.em UM registro"/>
-								<m:Input value="{viewModels>/Erfmg}" description="{viewModels>/Meins}"/>
+								<m:Input value="{viewModels>/ERFMG}" description="{viewModels>/MEINS}" editable="{= ${viewModels>/NOVO} === 'X' ? true : false }"/>
 							</l:VerticalLayout>
 						</blocks>
 					</ObjectPageSubSection>

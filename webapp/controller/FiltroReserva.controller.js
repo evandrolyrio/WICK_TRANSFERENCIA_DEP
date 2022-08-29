@@ -50,8 +50,8 @@ sap.ui.define([
 			});
 
 		},
-		displayReserva: function () {
-			var OBoundItem = oEvent.getSource().getBindingContext().getObject();
+		displayReserva: function (oEvent) {
+			var OBoundItem = oEvent.getSource().getBindingContext("viewModel").getObject();
 			if (OBoundItem) {
 
 				this.getRouter().navTo("ProcessarReserva", {
@@ -65,9 +65,9 @@ sap.ui.define([
 		novo: function () {
 
 			this.getRouter().navTo("ProcessarReserva", {
-				aufnr: "1",
-				rsnum: "1",
-				rspos: "9",
+				aufnr: "0",
+				rsnum: "0",
+				rspos: "0",
 				layout: this.getNextUiState(1).layout
 			});
 		},
