@@ -1,8 +1,9 @@
 sap.ui.define([
 	"sap/ui/core/mvc/Controller",
 	"sap/ui/model/json/JSONModel",
-	"sap/ui/core/routing/History"
-], function(Controller, JSONModel, History) {
+	"sap/ui/core/routing/History", "sap/ndc/BarcodeScanner",
+	"sap/m/MessageBox"
+], function(Controller, JSONModel, History, BarcodeScanner, MessageBox) {
 	"use strict";
 
 	return Controller.extend("transferencia.depositoZ_TRANSF_DEP.controller.BaseController", {
@@ -79,6 +80,29 @@ sap.ui.define([
 				});
 			}
 		},
+		scanHU: function(oEvent) {
+			return new Promise((resolve, reject) => {
+				BarcodeScanner.closeScanDialog();
+				BarcodeScanner.scan(
+					(mResult) => {
+						//If user cancelled scanning, cancel routine.
+						if (mResult.cancelled) {
+							reject();
+						}
+
+						if (mResult.text === "") {
+							reject();
+						}
+
+						resolve(mResult.text);
+
+					},
+					(Error) => {
+
+					}
+				);
+			});
+		},		
 		// resetChanges: function(sCurrentBindingPath) {
 		// 	return new Promise((resolve, reject) => {
 		// 		var oModel = this.getOwnerComponent().getModel();
