@@ -179,7 +179,16 @@ sap.ui.define([
 				},
 				success: (oData) => {
 					this.getModel("viewModel").setProperty("/busy", false);
-					MessageBox.information("Criado documento de Material:"+oData.Mblnr);					
+					if (oData.MSG) {
+						MessageBox.error(oData.MSG, {
+							title: "Erro",
+							onClose: () => {
+								reject();
+							}
+						});	
+					} else {
+						MessageBox.information("Criado documento de Material:"+oData.Mblnr);
+					};
 				},
 				error: (error) => {
 					// sap.m.MessageToast.show(JSON.parse(error.responseText).error.message.value);
