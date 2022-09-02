@@ -21,7 +21,7 @@
 					<Table id="tbReservas" class="custom_table" inset="false" items="{path: 'viewModel>/ReservaSet', parameters : { count: true }}"
 						busy="{viewModel>/busy}" mode="None">
 						<columns>
-							<Column minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline">
+							<Column minScreenWidth="Desktop" demandPopin="true" popinDisplay="Inline" width="5%">
 								<Text text="Item"/>
 							</Column>
 							<Column demandPopin="true">
@@ -33,7 +33,7 @@
 							<Column demandPopin="true">
 								<Text text="Qtd.necess"/>
 							</Column>
-							<Column demandPopin="true">
+							<Column demandPopin="true" width="5%">
 								<Text text="UM"/>
 							</Column>
 							<Column demandPopin="true">
