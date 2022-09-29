@@ -40,7 +40,7 @@
     "targetFolder": "dist",
     "excludedFolders": [],
     "excludedFiles": [],
-    "lastBuildDateTime": "Tue, 30 Aug 2022 20:14:42 GMT"
+    "lastBuildDateTime": "Fri, 02 Sep 2022 18:41:26 GMT"
   },
   "deploy": {
     "destination": "SFD",

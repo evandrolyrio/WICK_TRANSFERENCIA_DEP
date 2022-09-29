@@ -44,7 +44,7 @@
 							<ColumnListItem vAlign="Middle" press="displayReserva" type="Navigation" class="borda_destacada">
 								<cells>
 									<!--<ObjectIdentifier title="{RSPOS}" text="{= ${INBOUND} === true ? 'Recebimento' : 'Saída Depósito' }"/>-->
-									<Text text="{viewModel>RSPOS}"/>
+									<Text text="{viewModel>POSNR}"/>
 									<Text text="{viewModel>MATNR}"/>
 									<Text text="{viewModel>MAKTX}"/>
 									<Text text="{viewModel>BDMNG}"/>
