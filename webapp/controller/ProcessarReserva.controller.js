@@ -187,7 +187,7 @@ sap.ui.define([
 							}
 						});	
 					} else {
-						MessageBox.information("Criado documento de Material:"+oData.Mblnr);
+						MessageBox.information("Criado documento de Material:"+oData.MBLNR);
 					};
 				},
 				error: (error) => {
