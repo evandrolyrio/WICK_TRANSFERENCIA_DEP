@@ -46,7 +46,7 @@
 	},
 	"sap.ui5": {
 		"rootView": {
-			"viewName": "transferencia.depositoZ_TRANSF_DEP.view.FiltroReserva",
+			"viewName": "transferencia.depositoZ_TRANSF_DEP.view.ProcessarReserva",
 			"type": "XML"
 		},
 		"dependencies": {
@@ -101,30 +101,17 @@
 			"routes": [
 				{
 					"pattern": ":layout:",
-					"name": "FiltroReserva",
-					"target": [
-						"FiltroReserva"
-					],
-					"layout": "OneColumn"
-				},
-				{
-					"pattern": "reserva/{aufnr}/{rsnum}/{rspos}/:layout:",
 					"name": "ProcessarReserva",
 					"target": [
-						"FiltroReserva",
 						"ProcessarReserva"
 					],
-					"layout": "TwoColumnsMidExpanded"
+					"layout": "OneColumn"
 				}
 			],
 			"targets": {
-				"FiltroReserva": {
-					"viewName": "FiltroReserva",
-					"controlAggregation": "beginColumnPages"
-				},
 				"ProcessarReserva": {
 					"viewName": "ProcessarReserva",
-					"controlAggregation": "midColumnPages"
+					"controlAggregation": "beginColumnPages"
 				}
 			}
 		}

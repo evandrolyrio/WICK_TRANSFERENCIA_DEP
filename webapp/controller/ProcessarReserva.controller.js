@@ -11,18 +11,24 @@ sap.ui.define([
 
 		onInit: function() {
 			this.setModel(new JSONModel({
-				busy: true,
+				busy: false,
 				showFooter: false,
 				saveEnabled: false,
 				hasValidationError: false,
 				showToolbars: true
 			}), "viewModel");
 			
+			var oDateFormat = sap.ui.core.format.DateFormat.getDateInstance({
+    							pattern: "ddMMYY"
+				});
+
+			oDateFormat.format(new Date()); //string in the same format as "Thu, Jan 29, 2017"
+			
 			this.getView().setModel(new JSONModel({
 				busy: false,
 				AUFNR: "",
-				DATA_DOC: "",
-				DATA_LANC: "",				
+				DATA_DOC: oDateFormat.format(new Date()),
+				DATA_LANC: oDateFormat.format(new Date()),				
 				BWART: "311",
 				BTEXT: "",
 				LGORT: "MP",
@@ -38,27 +44,27 @@ sap.ui.define([
 				CHARG: "",
 				ERFMG: "",
 				MEINS: "",
-				NOVO: "",
+				NOVO: "X",
 			}), "viewModels");			
 
-			this.getModel("viewModel").setProperty("/busy", true);
-			// set message model
-			this.setModel(this.getMessageModel(), "message");
-			this.getMessageManager().registerObject(this.getView(), true);
+			// this.getModel("viewModel").setProperty("/busy", true);
+			// // set message model
+			// this.setModel(this.getMessageModel(), "message");
+			// this.getMessageManager().registerObject(this.getView(), true);
 
 			this.setModel(this.getOwnerComponent().getModel());
-			this.getView().unbindElement();
-			this.getRouter().getRoute("ProcessarReserva").attachPatternMatched((oEvent) => {
-				var _params = oEvent.getParameters();
-				this._reserva = _params.arguments.rsnum;
-				this._item    = _params.arguments.rspos;
-				this._ordem   = _params.arguments.aufnr;
-				this.getModel("viewModels").setProperty("/NOVO", "");
-				if (this._reserva == "0") {
-				  this.getModel("viewModels").setProperty("/NOVO", "X");
-				}
-				this.initView();
-			});
+			// this.getView().unbindElement();
+			// this.getRouter().getRoute("ProcessarReserva").attachPatternMatched((oEvent) => {
+			// 	var _params = oEvent.getParameters();
+			// 	this._reserva = _params.arguments.rsnum;
+			// 	this._item    = _params.arguments.rspos;
+			// 	this._ordem   = _params.arguments.aufnr;
+			// 	this.getModel("viewModels").setProperty("/NOVO", "");
+			// 	if (this._reserva == "0") {
+			// 	  this.getModel("viewModels").setProperty("/NOVO", "X");
+			// 	}
+				// this.initView();
+			// });
 		},
 		initView: function() {
 			this.getModel("viewModel").setProperty("/busy", true);

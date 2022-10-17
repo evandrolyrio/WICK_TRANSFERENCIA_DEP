@@ -12,7 +12,7 @@
 			</form:SimpleForm>			
 		</headerContent>
 	  	<sections>
-			<ObjectPageSection titleUppercase="false" id="migoSection" title="Transferência para área de separação OP">
+			<ObjectPageSection titleUppercase="false" id="migoSection" title="Transferência">
 				<subSections>
 					<ObjectPageSubSection id="migoSectionSS1">
 						<blocks>
