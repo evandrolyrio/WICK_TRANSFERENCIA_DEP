@@ -33,7 +33,7 @@ sap.ui.define([
 				BTEXT: "",
 				LGORT: "MP",
 				LGOBE: "",				
-				UMLGO: "SEP",
+				UMLGO: "",
 				LGOBE_R: "",
 				MATNR: "",
 				MAKTX: "",
