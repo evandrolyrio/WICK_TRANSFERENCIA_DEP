@@ -198,6 +198,7 @@ sap.ui.define([
 					    this.getView().getModel("viewModels").setProperty("/WERKS", "");
 						this.getView().getModel("viewModels").setProperty("/LGORT", "");
 						this.getView().getModel("viewModels").setProperty("/ERFMG", "");
+						this.getView().getModel("viewModels").setProperty("/MAKTX", "");
 					};
 				},
 				error: (error) => {
