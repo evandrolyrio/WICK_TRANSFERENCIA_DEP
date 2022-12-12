@@ -194,6 +194,10 @@ sap.ui.define([
 						});	
 					} else {
 						MessageBox.information("Criado documento de Material:"+oData.MBLNR);
+						this.getView().getModel("viewModels").setProperty("/MATNR", "");
+					    this.getView().getModel("viewModels").setProperty("/WERKS", "");
+						this.getView().getModel("viewModels").setProperty("/LGORT", "");
+						this.getView().getModel("viewModels").setProperty("/ERFMG", "");
 					};
 				},
 				error: (error) => {
