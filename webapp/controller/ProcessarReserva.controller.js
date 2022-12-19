@@ -374,6 +374,8 @@ sap.ui.define([
 				this.getModel("viewModels").setProperty("/WERKS", scannedCod.substr(0, 4));
 				this.getModel("viewModels").setProperty("/CHARG", scannedCod.substr(4, 10));
 				this.getModel("viewModels").setProperty("/MATNR", scannedCod.substr(14, 10));
+				
+				this.verificar();
 	
 			});				
 			

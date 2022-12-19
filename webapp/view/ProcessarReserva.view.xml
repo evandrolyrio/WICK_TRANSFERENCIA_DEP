@@ -1,55 +1,70 @@
-<mvc:View controllerName="transferencia.depositoZ_TRANSF_DEP.controller.ProcessarReserva" xmlns:core="sap.ui.core" xmlns:mvc="sap.ui.core.mvc" xmlns:m="sap.m" xmlns:goals="sap.uxap.sample.SharedBlocks.goals" xmlns="sap.uxap" xmlns:html="http://www.w3.org/1999/xhtml" xmlns:semantic="sap.f.semantic" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout">
-	<ObjectPageLayout showFooter="{viewModel>/showFooter}" busy="{viewModel>/busy}" headerContentPinnable="true" preserveHeaderStateOnScroll="false">  
-		<headerContent>
-			<form:SimpleForm  editable="true" layout="ResponsiveGridLayout" singleContainerFullSize="true" labelSpanXL="4" labelSpanL="3" labelSpanM="12" labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1">
-				<m:Toolbar>
-					<m:ToolbarSpacer/>
-					<m:Button text="Verificar" icon="sap-icon://newspaper" press="verificar"/>
-					<m:Button text="Registrar" icon="sap-icon://sys-enter-2" press="registrar"/>
-					<m:Button text="Ler Cod.Barras" width="auto" icon="sap-icon://bar-code" press="LerCod" 
-						      tooltip="Ler Cod.Barras" visible="{= ${viewModels>/NOVO} === 'X' ? true : false }"/>
-				</m:Toolbar>
-			</form:SimpleForm>			
-		</headerContent>
-	  	<sections>
-			<ObjectPageSection titleUppercase="false" id="migoSection" title="Transferência">
-				<subSections>
-					<ObjectPageSubSection id="migoSectionSS1">
-						<blocks>
-							<l:VerticalLayout>
-								<m:Label text="Ordem" visible="{= ${viewModels>/NOVO} === 'X' ? false : true }"/>
-								<m:Input value="{viewModels>/AUFNR}" editable="{= ${viewModels>/NOVO} === 'X' ? true : false }"
-								visible="{= ${viewModels>/NOVO} === 'X' ? false : true }"/>
-								<m:Label text="Data Documento"/>
-								<m:DatePicker value="{viewModels>/DATA_DOC}" valueFormat="dd.MM.yyyy" displayFormat="short" editable="false"/>				
-								<m:Label text="Data lçto."/>
-								<m:DatePicker value="{viewModels>/DATA_LANC}" valueFormat="dd.MM.yyyy" displayFormat="short" editable="false"/>								
-								<m:Label text="Tipo de Movimento" width="100%"/>
-								<m:Input value="{viewModels>/BWART}" description="{viewModels>/BTEXT}" editable="false" textAlign="Center"/>				
-								<m:Label text="Depósito"/>
-								<m:Input value="{viewModels>/LGORT}" description="{viewModels>/LGOBE}"/>
-								<m:Label text="Dps.recep."/>
-								<m:Input value="{viewModels>/UMLGO}" description="{viewModels>/LGOBE_R}"/>								
-								<!--<m:Label text="Text.cab.doc."/>-->
-								<!--<m:Input value="{BKTEXT}" editable="false"/>	-->
-
-							</l:VerticalLayout>								
-							<l:VerticalLayout>		
-								<m:Label text="Item"  visible="{= ${viewModels>/NOVO} === 'X' ? false : true }"/>
-								<m:Input value="{viewModels>/POSNR}"  visible="{= ${viewModels>/NOVO} === 'X' ? false : true }"/>							
-								<m:Label text="Centro"/>
-								<m:Input value="{viewModels>/WERKS}" description="{viewModels>/NAME1}" editable="{= ${viewModels>/NOVO} === 'X' ? true : false }"/>				
-								<m:Label text="Lote"/>
-								<m:Input value="{viewModels>/CHARG}" editable="{= ${viewModels>/NOVO} === 'X' ? true : false }"/>
-								<m:Label text="Material"/>
-								<m:Input value="{viewModels>/MATNR}" description="{viewModels>/MAKTX}" editable="{= ${viewModels>/NOVO} === 'X' ? true : false }"/>								
-								<m:Label text="Qtd.em UM registro"/>
-								<m:Input value="{viewModels>/ERFMG}" description="{viewModels>/MEINS}" editable="{= ${viewModels>/NOVO} === 'X' ? true : false }"/>
-							</l:VerticalLayout>
-						</blocks>
-					</ObjectPageSubSection>
-				</subSections>
-			</ObjectPageSection>
-		</sections>
-	</ObjectPageLayout>
+<mvc:View controllerName="transferencia.depositoZ_TRANSF_DEP.controller.ProcessarReserva" xmlns:core="sap.ui.core"
+	xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:goals="sap.uxap.sample.SharedBlocks.goals" xmlns:uxap="sap.uxap"
+	xmlns:html="http://www.w3.org/1999/xhtml" xmlns:semantic="sap.f.semantic" xmlns:form="sap.ui.layout.form" xmlns:l="sap.ui.layout">
+	<semantic:SemanticPage id="mySemanticPage" headerPinnable="true" toggleHeaderOnTitleClick="false" headerExpanded="true" showFooter="false"
+		preserveHeaderStateOnScroll="false">
+		<semantic:headerContent>
+			<form:SimpleForm editable="true" layout="ResponsiveGridLayout" singleContainerFullSize="true" labelSpanXL="4" labelSpanL="3" labelSpanM="12"
+				labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1">
+				<Toolbar>
+					<ToolbarSpacer/>
+					<Button text="Verificar" icon="sap-icon://newspaper" press="verificar"/>
+					<Button text="Registrar" icon="sap-icon://sys-enter-2" press="registrar"/>
+					<Button text="Ler Cod.Barras" width="auto" icon="sap-icon://bar-code" press="LerCod" tooltip="Ler Cod.Barras"
+						visible="{= ${viewModels>/NOVO} === 'X' ? true : false }"/>
+				</Toolbar>
+			</form:SimpleForm>
+		</semantic:headerContent>
+		<semantic:content>
+			<!--<IconTabBar select="handleFilterFromBar" class="sapUiResponsiveContentPadding">-->
+			<form:SimpleForm editable="true" layout="ResponsiveGridLayout" singleContainerFullSize="true" labelSpanXL="4" labelSpanL="3" labelSpanM="12"
+				labelSpanS="12" adjustLabelSpan="false" emptySpanXL="0" emptySpanL="0" emptySpanM="0" emptySpanS="0" columnsXL="1" columnsL="1" columnsM="1">
+				<!--<content>-->
+				<l:VerticalLayout>
+					<Label text="Ordem" visible="{= ${viewModels>/NOVO} === 'X' ? false : true }"/>
+					<Input value="{viewModels>/AUFNR}" editable="{= ${viewModels>/NOVO} === 'X' ? true : false }"
+						visible="{= ${viewModels>/NOVO} === 'X' ? false : true }"/>
+					<Label text="Data Documento"/>
+					<DatePicker value="{viewModels>/DATA_DOC}" valueFormat="dd.MM.yyyy" displayFormat="short" editable="false"/>
+					<Label text="Data lçto."/>
+					<DatePicker value="{viewModels>/DATA_LANC}" valueFormat="dd.MM.yyyy" displayFormat="short" editable="false"/>
+					<Label text="Tipo de Movimento" width="100%"/>
+					<Input value="{viewModels>/BWART}" description="{viewModels>/BTEXT}" editable="false" textAlign="Center"/>
+					<Label text="Depósito"/>
+					<Input value="{viewModels>/LGORT}" description="{viewModels>/LGOBE}"/>
+					<Label text="Dps.recep."/>
+					<Input value="{viewModels>/UMLGO}" description="{viewModels>/LGOBE_R}"/>
+					<!--<m:Label text="Text.cab.doc."/>-->
+					<!--<m:Input value="{BKTEXT}" editable="false"/>	-->
+				</l:VerticalLayout>
+				<l:VerticalLayout>
+					<Label text="Item" visible="{= ${viewModels>/NOVO} === 'X' ? false : true }"/>
+					<Input value="{viewModels>/POSNR}" visible="{= ${viewModels>/NOVO} === 'X' ? false : true }"/>
+					<Label text="Centro"/>
+					<Input value="{viewModels>/WERKS}" description="{viewModels>/NAME1}" editable="{= ${viewModels>/NOVO} === 'X' ? true : false }"/>
+					<Label text="Lote"/>
+					<Input value="{viewModels>/CHARG}" editable="{= ${viewModels>/NOVO} === 'X' ? true : false }"/>
+					<Label text="Material"/>
+					<Input value="{viewModels>/MATNR}" description="{viewModels>/MAKTX}" editable="{= ${viewModels>/NOVO} === 'X' ? true : false }"/>
+					<Label text="Qtd.em UM registro"/>
+					<Input value="{viewModels>/ERFMG}" description="{viewModels>/MEINS}" editable="{= ${viewModels>/NOVO} === 'X' ? true : false }"/>
+				</l:VerticalLayout>
+				<!--</content>-->
+			</form:SimpleForm>
+			<!--</IconTabBar>-->
+		</semantic:content>
+		<!--<m:footer>-->
+		<!--	<m:Bar>-->
+		<!--		<m:contentLeft>-->
+		<!--			<m:Button text="Salvar" icon="sap-icon://save" type="Accept" press="onPressSave"/>-->
+		<!--		</m:contentLeft>-->
+		<!--		<m:contentMiddle>-->
+		<!--			<m:Button text="Limpar" icon="sap-icon://sys-cancel" type="Default" press="onPressClear"/>-->
+		<!--		</m:contentMiddle>-->
+		<!--		<m:contentRight>-->
+		<!--			<m:Button text="Deletar" icon="sap-icon://delete" type="Reject" press="onPressDelete"/>-->
+		<!--		</m:contentRight>-->
+		<!--	</m:Bar>-->
+		<!--</m:footer>-->
+	</semantic:SemanticPage>
 </mvc:View>
