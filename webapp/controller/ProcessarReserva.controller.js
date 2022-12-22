@@ -164,6 +164,12 @@ sap.ui.define([
 			this.getDados(oDados);
 			this.getModel("viewModel").setProperty("/busy", false);
 		},
+		verificarIni: function(oEvent) {
+			var oDados = this.getView().getModel("viewModels").getData();
+			this.getModel("viewModel").setProperty("/busy", true);
+			this.getDadosIni(oDados);
+			this.getModel("viewModel").setProperty("/busy", false);
+		},		
 		registrar: function(oEvent) {
 			var oDados = this.getView().getModel("viewModels").getData();
 			this.getModel("viewModel").setProperty("/busy", true);
@@ -366,6 +372,73 @@ sap.ui.define([
 				}
 			});	
 		},
+		getDadosIni: function(oItem) {
+			var oModel = this.getView().getModel();
+			oModel.invalidate();
+			oModel.callFunction("/GetDados", {
+				method: "GET",
+				urlParameters: {
+					Matnr: oItem.MATNR,
+					Werks: oItem.WERKS,
+					Lgort: oItem.LGORT,
+					Umlgo: oItem.UMLGO,
+					Charg: oItem.CHARG,
+					Erfmg: oItem.ERFMG,
+					Meins: oItem.MEINS
+				},
+				success: (oData) => {
+					this.getView().getModel("viewModels").setProperty("/BTEXT", oData.BTEXT);
+					this.getView().getModel("viewModels").setProperty("/MATNR", oData.MATNR);
+					this.getView().getModel("viewModels").setProperty("/WERKS", oData.WERKS);
+					this.getView().getModel("viewModels").setProperty("/LGORT", oData.LGORT);
+					this.getView().getModel("viewModels").setProperty("/MAKTX", oData.MAKTX);
+					this.getView().getModel("viewModels").setProperty("/LGOBR_R", oData.LGOBR_R);
+					this.getView().getModel("viewModels").setProperty("/LGOBE", oData.LGOBE);
+					this.getView().getModel("viewModels").setProperty("/CHARG", oData.CHARG);
+					this.getView().getModel("viewModels").setProperty("/ERFMG", oData.ERFMG);
+					this.getView().getModel("viewModels").setProperty("/MEINS", oData.MEINS);
+					
+					var erro = "";
+					if (!oData.MATNR) {
+						erro = "X";
+						MessageBox.error("Material é Obrigatório", {
+							title: "Campo Obrigatório",
+							onClose: () => {
+								reject();
+							}
+						});				
+					} else if (!oData.WERKS) {
+						erro = "X";
+						MessageBox.error("Centro é Obrigatório", {
+							title: "Campo Obrigatório",
+							onClose: () => {
+								reject();
+							}
+						});							
+					} else if (!oData.LGORT) {
+						erro = "X";
+						MessageBox.error("Depósito é Obrigatório", {
+							title: "Campo Obrigatório",
+							onClose: () => {
+								reject();
+							}
+						});							
+					};
+					if (erro === "") {
+						MessageBox.information("Dados verificados");	
+					};					
+				},
+				error: (error) => {
+					// sap.m.MessageToast.show(JSON.parse(error.responseText).error.message.value);
+					MessageBox.error(JSON.parse(error.responseText).error.message.value, {
+						title: "Erro",
+						onClose: () => {
+							reject();
+						}
+					});						
+				}
+			});	
+		},		
 		LerCod: function() {
 			const oModel = this.getModel();
 			this.scanHU().then((scannedCod) => {
@@ -375,7 +448,7 @@ sap.ui.define([
 				this.getModel("viewModels").setProperty("/CHARG", scannedCod.substr(4, 10));
 				this.getModel("viewModels").setProperty("/MATNR", scannedCod.substr(14, 10));
 				
-				this.verificar();
+				this.verificarIni();
 	
 			});				
 			
